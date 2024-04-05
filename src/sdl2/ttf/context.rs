@@ -1,12 +1,12 @@
-use get_error;
-use rwops::RWops;
+use crate::get_error;
+use crate::rwops::RWops;
+use crate::version::Version;
 use std::error;
 use std::fmt;
 use std::io;
 use std::os::raw::{c_int, c_long};
 use std::path::Path;
 use sys::ttf;
-use version::Version;
 
 use super::font::{
     internal_load_font, internal_load_font_at_index, internal_load_font_from_ll, Font,

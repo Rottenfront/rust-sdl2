@@ -1,9 +1,9 @@
 //! Surface Rotozoomer
 
-use get_error;
+use crate::get_error;
+use crate::surface::Surface;
 use libc::c_int;
 pub use std::f64::consts::PI;
-use surface::Surface;
 use sys::gfx::rotozoom;
 
 /// `RotozoomSurface` for work with rust-sdl2 Surface type

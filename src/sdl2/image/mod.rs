@@ -20,20 +20,21 @@
 //! features = ["image"]
 //! ```
 
-use get_error;
-use render::{Texture, TextureCreator};
-use rwops::RWops;
+use crate::get_error;
+use crate::render::{Texture, TextureCreator};
+use crate::rwops::RWops;
+use crate::surface::Surface;
+use crate::version::Version;
 use std::ffi::CString;
 use std::os::raw::{c_char, c_int};
 use std::path::Path;
-use surface::Surface;
 use sys;
 use sys::image;
-use version::Version;
 
 bitflags! {
     /// InitFlags are passed to init() to control which subsystem
     /// functionality to load.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
     pub struct InitFlag : u32 {
         const JPG  = image::IMG_InitFlags_IMG_INIT_JPG as u32;
         const PNG  = image::IMG_InitFlags_IMG_INIT_PNG as u32;
@@ -185,13 +186,13 @@ pub fn init(flags: InitFlag) -> Result<Sdl2ImageContext, String> {
         let used = image::IMG_Init(flags.bits() as c_int);
         InitFlag::from_bits_truncate(used as u32)
     };
-    if !flags.intersects(return_flags) {
+    if !flags.intersects(return_flags.clone()) {
         // According to docs, error message text is not always set
         let mut error = get_error();
         if error.is_empty() {
             let un_init_flags = return_flags ^ flags;
             error = format!("Could not init: {}", un_init_flags);
-            let _ = ::set_error(&error);
+            let _ = crate::set_error(&error);
         }
         Err(error)
     } else {

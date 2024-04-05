@@ -693,6 +693,9 @@ pub struct Window {
     context: Rc<WindowContext>,
 }
 
+unsafe impl Send for Window {}
+unsafe impl Sync for Window {}
+
 impl From<WindowContext> for Window {
     fn from(context: WindowContext) -> Window {
         Window {

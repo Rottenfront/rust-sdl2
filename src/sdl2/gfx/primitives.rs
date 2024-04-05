@@ -1,15 +1,15 @@
 //! Graphic Primitives
 
-use get_error;
+use crate::get_error;
+use crate::pixels;
+use crate::render::Canvas;
+use crate::surface::Surface;
 use libc::c_void;
 use libc::{c_char, c_int};
-use pixels;
-use render::Canvas;
 use std::convert::TryFrom;
 use std::ffi::CString;
 use std::mem;
 use std::ptr;
-use surface::Surface;
 use sys::gfx::primitives;
 
 /// generic Color type
@@ -213,7 +213,7 @@ pub trait DrawRenderer {
 
 impl<T> DrawRenderer for Canvas<T>
 where
-    T: ::render::RenderTarget,
+    T: crate::render::RenderTarget,
 {
     fn pixel<C: ToColor>(&self, x: i16, y: i16, color: C) -> Result<(), String> {
         let ret = unsafe { primitives::pixelColor(self.raw(), x, y, color.as_u32()) };

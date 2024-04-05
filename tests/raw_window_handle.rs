@@ -1,8 +1,5 @@
 #[cfg(feature = "raw-window-handle")]
 mod raw_window_handle_test {
-    extern crate raw_window_handle;
-    extern crate sdl2;
-
     use self::raw_window_handle::{
         HasRawDisplayHandle, HasRawWindowHandle, RawDisplayHandle, RawWindowHandle,
     };

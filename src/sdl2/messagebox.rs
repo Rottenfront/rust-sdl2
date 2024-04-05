@@ -21,7 +21,7 @@ bitflags! {
 }
 
 bitflags! {
-    pub struct MessageBoxButtonFlag: u32 {
+    #[derive(Debug)]pub struct MessageBoxButtonFlag: u32 {
         const ESCAPEKEY_DEFAULT =
             sys::SDL_MessageBoxButtonFlags::SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT as u32;
         const RETURNKEY_DEFAULT =

@@ -1,7 +1,7 @@
 //! MMX image filters
 
+use crate::get_error;
 use c_vec::CVec;
-use get_error;
 use libc::{self, c_int, c_uint, c_void, size_t};
 use std::mem;
 use sys::gfx::imagefilter;

@@ -1,6 +1,7 @@
-use get_error;
-use pixels::Color;
-use rwops::RWops;
+use crate::get_error;
+use crate::pixels::Color;
+use crate::rwops::RWops;
+use crate::surface::Surface;
 use std::error;
 use std::error::Error;
 use std::ffi::NulError;
@@ -9,7 +10,6 @@ use std::fmt;
 use std::marker::PhantomData;
 use std::os::raw::{c_int, c_long, c_uint};
 use std::path::Path;
-use surface::Surface;
 use sys::ttf;
 use sys::SDL_Surface;
 

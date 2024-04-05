@@ -106,5 +106,5 @@ mod common;
 // Export return types and such from the common module.
 pub use crate::common::IntegerOrSdlError;
 
-#[cfg(feature = "raw-window-handle")]
+#[cfg(feature = "rwh")]
 pub mod raw_window_handle;
